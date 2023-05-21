@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Hello</h1>
+    <div><b>How are you doing?</b></div>
+    any next
+    <ul>
+        <li> 1.1 </li>
+        <li>1.2 </li>
+        <ul>
+            <li> 2.1</li>
+            <li>2.2 </li>
+        </ul>
+    </ul>
+    <script>
+        //console.dir(document.body);
+        console.log(document.body);
+        console.log(document.querySelector('div'));
+        console.log(document.body.childNodes[document.body.childNodes.length - 2]);
+        let ul = document.body.getElementsByTagName('ul')
+        let li = document.body.getElementsByTagName('li')
+        let count = 0;
+        for (let elem of li) {
+            console.log(elem.innerHTML.trim());
+            count += 1;
+        }
+        console.log(count);
+    </script>
+
+</body>
+
+</html>

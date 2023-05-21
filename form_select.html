@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <select id="genres">
+        <option value="rock">Рок</option>
+        <option value="blues" selected>Блюз</option>
+    </select>
+    <script>
+        //1
+        /*         let selected = Array.from(genres.options)
+                    .filter(option => option.selected)
+                    .map(option => option.text);
+                alert(genres.value + ' : ' + selected); */
+        alert(`Значение = ${genres.value}  Содержимое =${genres.options[genres.selectedIndex].text}`);
+        //  let selectedOption = genres.options[genres.selectedIndex];
+
+        // alert(selectedOption.value + ' : ' + selectedOption.text);
+
+        //2
+        let newOption = new Option('Классика', 'classic');
+        genres.append(newOption);
+        //3
+        newOption.selected = true;
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function Calculator() {
+            this.read = function () {
+                this.a = +prompt("Input first number a?", "2");
+                this.b = +prompt("Input second number b?", "3");
+            }
+            this.sum = function () {
+                return this.a + this.b;
+            }
+            this.mul = function () {
+                return this.a * this.b;
+            }
+        }
+        let calculator = new Calculator();
+        calculator.read();
+
+        alert("Sum=" + calculator.sum());
+        alert("Mul=" + calculator.mul());
+    </script>
+</head>
+
+<body>
+    <h1>Hellow world!</h1>
+    <a href="index.html">return on main</a>
+</body>
+
+</html>

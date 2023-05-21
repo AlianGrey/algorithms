@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td select,
+        td input {
+            width: 150px;
+        }
+
+        #diagram td {
+            vertical-align: bottom;
+            text-align: center;
+            padding: 10px;
+        }
+
+        #diagram div {
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Депозитный калькулятор.</h1>
+    <form name="calculator">
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        Первоначальный депозит :
+                    </td>
+                    <td>
+                        <input name="money" type="number" value="10000" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Срок вклада?
+                    </td>
+                    <td>
+                        <select name="months">
+                            <option value="3">3 (min)</option>
+                            <option value="6">6 (halfyear)</option>
+                            <option value="12" selected="">12 (year)</option>
+                            <option value="18">13 (1.5 year)</option>
+                            <option value="24"> 24 (2 years)</option>
+                            <option value="30"> 30 (2.5 years)</option>
+                            <option value="36"> 36 (3years)</option>
+                            <option value="60"> 60 (5 years)</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Годовая процентная ставка?
+                    </td>
+                    <td>
+                        <input name="interest" type="number" value="5" required>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    <table id="diagram">
+        <tbody>
+            <tr>
+                <th>
+                    Was:
+                </th>
+                <th>
+                    Become:
+                </th>
+            </tr>
+            <tr>
+                <th id="money-before">10000</th>
+                <th id="money-after">10500</th>
+            </tr>
+            <tr>
+                <td>
+                    <div style="background:red;width:40px;height:100px;"></div>
+                </td>
+                <td>
+                    <div id="height-after" style="background:green none repeat scroll 0% 0%;width:40px;height:0px;">
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+
+
+    <script>
+        let form = document.forms.calculator;
+        form.money.oninput = calculate;
+        form.months.oninput = calculate;
+        form.interest.oninput = calculate;
+
+        function calculate() {
+            let initial = +form.money.value;
+            if (!initial) return;
+            let interest = form.interest.value * 0.01;
+            if (!interest) return;
+            let years = form.months.value / 12;
+            if (!years) return;
+            let result = Math.round(initial * (1 + interest) ** years);
+
+            let height = result / form.money.value * 100 + 'px';
+            document.getElementById('height-after').style.height = height;
+            document.getElementById('money-before').innerHTML = form.money.value;
+            document.getElementById('money-after').innerHTML = result;
+        };
+
+
+        calculate();
+    </script>
+</body>
+
+</html>
